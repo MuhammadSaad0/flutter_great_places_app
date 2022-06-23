@@ -20,6 +20,9 @@ class _ImageInputState extends State<ImageInput> {
         maxWidth: double.infinity,
         context: ctx,
         source: ImgSource.Camera);
+    if (image == null) {
+      return;
+    }
     setState(() {
       _storedImage = File(image.path);
     });
@@ -43,9 +46,11 @@ class _ImageInputState extends State<ImageInput> {
                       _storedImage,
                     ),
                   )
-                : Text(
-                    "No Image Taken",
-                    textAlign: TextAlign.center,
+                : Center(
+                    child: Text(
+                      "No Image Taken",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 3.5,
